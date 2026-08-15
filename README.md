@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lucin Medical Centre — Website
 
-## Getting Started
+A modern, mobile-first website for **Lucin Medical Centre**, an outpatient
+clinic on Kasarani Mwiki Road, Nairobi, Kenya.
 
-First, run the development server:
+Built with **Next.js 16** (App Router), **React 19**, **TypeScript**,
+**Tailwind CSS v4**, and **lucide-react**.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## What's inside
+
+A single-page marketing site composed of focused section components:
+
+```
+app/
+├── layout.tsx                  Root layout, fonts, metadata, Header + Footer
+├── page.tsx                    Homepage — composes all sections
+├── globals.css                 Tailwind v4 design system (brand palette, motion)
+├── components/
+│   ├── Header.tsx              Sticky header with mobile drawer menu
+│   ├── Hero.tsx                Hero with CTA + floating stat cards + stats bar
+│   ├── Services.tsx             6 service cards + CTA strip
+│   ├── About.tsx               Story, timeline, "Why choose us" grid
+│   ├── Doctors.tsx             4 doctor cards
+│   ├── WorkingHours.tsx        Hours card with "today" highlight
+│   ├── Testimonials.tsx        4 patient reviews + rating summary
+│   ├── Contact.tsx             Booking form + contact card + Google Maps embed
+│   ├── Footer.tsx              Brand, links, services, contact, social
+│   ├── MobileCTABar.tsx        Sticky bottom Call/Book bar (mobile only)
+│   ├── Reveal.tsx              Reveal-on-scroll wrapper (IntersectionObserver)
+│   ├── Icon.tsx                Centralised lucide icon mapper
+│   └── ClinicDataContext.tsx   Provides clinic info to client components
+└── lib/
+    ├── data.ts                 Single source of truth (services, doctors, hours, …)
+    └── useReveal.ts            IntersectionObserver hook
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Design system
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Token        | Value                                                  |
+| ------------ | ------------------------------------------------------ |
+| Primary      | Teal — `#0d9488` (brand-600) → `#0f766e` (brand-700)  |
+| Accent       | Amber — `#f59e0b` (accent-500)                          |
+| Background   | Warm cream — `#fafaf7`                                 |
+| Text         | Slate — `#0f172a` (ink-900)                            |
+| Body font    | Geist Sans                                             |
+| Display font | Geist Sans (bold, tracking-tight)                      |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Animations respect `prefers-reduced-motion`.
 
-## Learn More
+## Getting started
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install
+npm run dev      # http://localhost:3000
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
+## Editing content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+All clinic information lives in `app/lib/data.ts` — update the phone number,
+email, hours, services, doctors and testimonials there and the changes will
+propagate across the site.
