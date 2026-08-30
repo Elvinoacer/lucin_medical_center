@@ -6,6 +6,7 @@ import WorkingHours from "./components/WorkingHours";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import MobileCTABar from "./components/MobileCTABar";
+import Chatbot from "./components/Chatbot";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <Testimonials />
       <Contact />
       <MobileCTABar />
+      <Chatbot />
     </>
   );
 }
